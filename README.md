@@ -18,7 +18,7 @@ Thus, I googlised and found inspiration with :
 ## Get the receipt
 It's easy to get the receipt 
 
-'''Objective-C
+```
 -(NSData *) receipt {
 if (!_receipt) {
 NSURL *url = [[NSBundle mainBundle] appStoreReceiptURL];
@@ -26,11 +26,11 @@ _receipt = [NSData dataWithContentsOfURL:url];
 }
 return _receipt;
 }
-
-'''
+```
 
 but you must know :
-- 
+- During development (sandbox) you need to use SKReceiptRefreshRequest and wait for its delegate’s requestDidFinish to have the receipt file at the defined URL
+- You cannot use simulator (no receipt file loaded)
 
 
 # OpenSSL Framework buiding
