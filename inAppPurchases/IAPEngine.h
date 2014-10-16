@@ -12,7 +12,7 @@
 typedef void (^RequestProductsCompletionHandler)(BOOL success, NSArray * products);
 UIKIT_EXTERN NSString *const IAPEngineProductPurchasedNotification;
 
-@interface IAPEngine : NSObject
+@interface IAPEngine : NSObject <SKRequestDelegate>
 
 - (id)initWithProductIdentifiers:(NSSet *)productIdentifiers;
 - (void)requestProductsWithCompletionHandler:(RequestProductsCompletionHandler)completionHandler;

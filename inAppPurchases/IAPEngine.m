@@ -12,7 +12,11 @@
 @interface IAPEngine () <SKProductsRequestDelegate, SKPaymentTransactionObserver>
 
 @property (strong, nonatomic) SKProductsRequest *productsRequest;
+@property (strong, nonatomic) SKReceiptRefreshRequest *receiptRequestRefresh;
+
+
 @property (strong, nonatomic) RequestProductsCompletionHandler completionHandler;
+@property (strong, nonatomic) NSData *receipt;
 @property (strong, nonatomic) NSSet *productIdentifiers;
 @property (strong, nonatomic) NSMutableSet *purchasedProductIdentifiers;
 @end
@@ -21,27 +25,101 @@
 
 NSString *const IAPEngineProductPurchasedNotification = @"IAPEngineProductPurchasedNotification";
 
+
+
+-(NSData *) receipt {
+    if (!_receipt) {
+        NSURL *url = [[NSBundle mainBundle] appStoreReceiptURL];
+        _receipt = [NSData dataWithContentsOfURL:url];
+    }
+    return _receipt;
+}
+
+
+
 - (id)initWithProductIdentifiers:(NSSet *)productIdentifiers {
     
     if ((self = [super init])) {
+       
         // Store product identifiers
         self.productIdentifiers = productIdentifiers;
         
-        // Check for previously purchased products
-        self.purchasedProductIdentifiers = [NSMutableSet set];
-        for (NSString * productIdentifier in self.productIdentifiers) {
-            BOOL productPurchased = [[NSUserDefaults standardUserDefaults] boolForKey:productIdentifier];
-            if (productPurchased) {
-                [self.purchasedProductIdentifiers addObject:productIdentifier];
-                NSLog(@"Previously purchased: %@", productIdentifier);
-            } else {
-                NSLog(@"Not purchased: %@", productIdentifier);
-            }
+        if (!self.receipt) { //sandbox environment ?
+            self.receiptRequestRefresh = [[SKReceiptRefreshRequest alloc] init];
+            self.receiptRequestRefresh.delegate = self;
+            [self.receiptRequestRefresh start];
         }
-        [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+        
+        if ([self isAppReceiptValidated]) {
+            
+            /*
+            // Check for previously purchased products
+            self.purchasedProductIdentifiers = [NSMutableSet set];
+            
+            for (NSString * productIdentifier in self.productIdentifiers) {
+                BOOL productPurchased = [[NSUserDefaults standardUserDefaults] boolForKey:productIdentifier];
+                if (productPurchased) {
+                    [self.purchasedProductIdentifiers addObject:productIdentifier];
+                    NSLog(@"Previously purchased: %@", productIdentifier);
+                } else {
+                    NSLog(@"Not purchased: %@", productIdentifier);
+                }
+            }
+             */
+             
+            [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+        }
     }
     return self;
 }
+
+
+
+- (BOOL) isAppReceiptValidated {
+    
+    
+
+    
+    return NO;
+}
+
+/*////////////////////////////////////////////////////////////////////////////////
+ SKRequestDelegate
+ ///////////////////////////////////////////////////////////////////////////////*/
+
+- (void)requestDidFinish:(SKRequest *)request
+{
+    if ([request isEqual:self.receiptRequestRefresh]){
+        NSLog(@"Got receipt");
+    }
+}
+
+- (void)request:(SKRequest *)request didFailWithError:(NSError *)error {
+    
+    if ([request isEqual:self.receiptRequestRefresh]){
+        NSLog(@"Error getting receipt");
+    } else if ([request isEqual:self.productsRequest]) {
+        NSLog(@"Failed to load list of products.");
+        NSLog(@"error : %@",[error description]);
+        self.productsRequest = nil;
+        //    self.completionHandler(NO, nil);
+        //    self.completionHandler = nil;
+    }
+    
+    
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 - (void)requestProductsWithCompletionHandler:(RequestProductsCompletionHandler)completionHandler {
 
@@ -71,14 +149,7 @@ NSString *const IAPEngineProductPurchasedNotification = @"IAPEngineProductPurcha
     self.completionHandler = nil;
 }
 
-- (void)request:(SKRequest *)request didFailWithError:(NSError *)error {
-    
-    NSLog(@"Failed to load list of products.");
-    NSLog(@"error : %@",[error description]);
-    self.productsRequest = nil;
-    self.completionHandler(NO, nil);
-    self.completionHandler = nil;
-}
+
 
 /*////////////////////////////////////////////////////////////////////////////////
  Buying product

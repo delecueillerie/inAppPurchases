@@ -9,13 +9,10 @@
 /* Begin PBXBuildFile section */
 		0930F95019DECEC800959A72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0930F94F19DECEC800959A72 /* main.m */; };
 		0930F95319DECEC800959A72 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0930F95219DECEC800959A72 /* AppDelegate.m */; };
-		0930F95619DECEC800959A72 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0930F95519DECEC800959A72 /* ViewController.m */; };
 		0930F95B19DECEC800959A72 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0930F95A19DECEC800959A72 /* Images.xcassets */; };
 		0930F95E19DECEC800959A72 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0930F95C19DECEC800959A72 /* LaunchScreen.xib */; };
-		0930F96A19DECEC800959A72 /* inAppPurchasesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0930F96919DECEC800959A72 /* inAppPurchasesTests.m */; };
 		0930F97419DED0C500959A72 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0930F97319DED0C500959A72 /* StoreKit.framework */; };
 		0930F97719DED37900959A72 /* IAPEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0930F97619DED37900959A72 /* IAPEngine.m */; };
-		0930F97819DED37900959A72 /* IAPEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0930F97619DED37900959A72 /* IAPEngine.m */; };
 		0930F97B19DEDB0C00959A72 /* IAPEngineForSFMK.m in Sources */ = {isa = PBXBuildFile; fileRef = 0930F97A19DEDB0C00959A72 /* IAPEngineForSFMK.m */; };
 		0930F98019DEFACA00959A72 /* IAP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0930F97E19DEFACA00959A72 /* IAP.storyboard */; };
 		0930F98419DEFBF700959A72 /* IAPTVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0930F98319DEFBF700959A72 /* IAPTVController.m */; };
@@ -89,29 +86,14 @@
 		09A56A6219EC0E9300E4EB20 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A56A6019EC0E9300E4EB20 /* libssl.a */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		0930F96419DECEC800959A72 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0930F94219DECEC800959A72 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0930F94919DECEC800959A72;
-			remoteInfo = inAppPurchases;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		0930F94A19DECEC800959A72 /* inAppPurchases.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = inAppPurchases.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0930F94E19DECEC800959A72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0930F94F19DECEC800959A72 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0930F95119DECEC800959A72 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0930F95219DECEC800959A72 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		0930F95419DECEC800959A72 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		0930F95519DECEC800959A72 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		0930F95A19DECEC800959A72 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0930F95D19DECEC800959A72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		0930F96319DECEC800959A72 /* inAppPurchasesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = inAppPurchasesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0930F96819DECEC800959A72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0930F96919DECEC800959A72 /* inAppPurchasesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = inAppPurchasesTests.m; sourceTree = "<group>"; };
 		0930F97319DED0C500959A72 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0930F97519DED37900959A72 /* IAPEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPEngine.h; sourceTree = "<group>"; };
 		0930F97619DED37900959A72 /* IAPEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPEngine.m; sourceTree = "<group>"; };
@@ -206,25 +188,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0930F96019DECEC800959A72 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		0930F94119DECEC800959A72 = {
 			isa = PBXGroup;
 			children = (
-				09A569E219EC0E7500E4EB20 /* include */,
 				09A569DD19E70EA400E4EB20 /* README.md */,
 				0930F97D19DEDB8300959A72 /* blind.h */,
 				0930F94C19DECEC800959A72 /* Classes */,
 				0930F98119DEFAF000959A72 /* App */,
-				0930F96619DECEC800959A72 /* inAppPurchasesTests */,
 				0930F99919E6C21700959A72 /* Framework */,
 				0930F94B19DECEC800959A72 /* Products */,
 			);
@@ -234,7 +207,6 @@
 			isa = PBXGroup;
 			children = (
 				0930F94A19DECEC800959A72 /* inAppPurchases.app */,
-				0930F96319DECEC800959A72 /* inAppPurchasesTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -262,31 +234,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0930F96619DECEC800959A72 /* inAppPurchasesTests */ = {
-			isa = PBXGroup;
-			children = (
-				0930F96919DECEC800959A72 /* inAppPurchasesTests.m */,
-				0930F96719DECEC800959A72 /* Supporting Files */,
-			);
-			path = inAppPurchasesTests;
-			sourceTree = "<group>";
-		};
-		0930F96719DECEC800959A72 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				0930F96819DECEC800959A72 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		0930F98119DEFAF000959A72 /* App */ = {
 			isa = PBXGroup;
 			children = (
 				0930F97E19DEFACA00959A72 /* IAP.storyboard */,
 				0930F95119DECEC800959A72 /* AppDelegate.h */,
 				0930F95219DECEC800959A72 /* AppDelegate.m */,
-				0930F95419DECEC800959A72 /* ViewController.h */,
-				0930F95519DECEC800959A72 /* ViewController.m */,
 				0930F98219DEFBF700959A72 /* IAPTVController.h */,
 				0930F98319DEFBF700959A72 /* IAPTVController.m */,
 				0930F95A19DECEC800959A72 /* Images.xcassets */,
@@ -312,6 +265,7 @@
 		0930F99919E6C21700959A72 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				09A569E219EC0E7500E4EB20 /* include */,
 				09A56A5E19EC0E9300E4EB20 /* lib */,
 				0930F97319DED0C500959A72 /* StoreKit.framework */,
 				0930F98C19E2D32200959A72 /* Security.framework */,
@@ -497,24 +451,6 @@
 			productReference = 0930F94A19DECEC800959A72 /* inAppPurchases.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0930F96219DECEC800959A72 /* inAppPurchasesTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 0930F97019DECEC800959A72 /* Build configuration list for PBXNativeTarget "inAppPurchasesTests" */;
-			buildPhases = (
-				0930F95F19DECEC800959A72 /* Sources */,
-				0930F96019DECEC800959A72 /* Frameworks */,
-				0930F96119DECEC800959A72 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0930F96519DECEC800959A72 /* PBXTargetDependency */,
-			);
-			name = inAppPurchasesTests;
-			productName = inAppPurchasesTests;
-			productReference = 0930F96319DECEC800959A72 /* inAppPurchasesTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -526,15 +462,12 @@
 				TargetAttributes = {
 					0930F94919DECEC800959A72 = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = SHPQ7VY3T5;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
 						};
-					};
-					0930F96219DECEC800959A72 = {
-						CreatedOnToolsVersion = 6.0.1;
-						TestTargetID = 0930F94919DECEC800959A72;
 					};
 				};
 			};
@@ -552,7 +485,6 @@
 			projectRoot = "";
 			targets = (
 				0930F94919DECEC800959A72 /* inAppPurchases */,
-				0930F96219DECEC800959A72 /* inAppPurchasesTests */,
 			);
 		};
 /* End PBXProject section */
@@ -565,13 +497,6 @@
 				0930F95E19DECEC800959A72 /* LaunchScreen.xib in Resources */,
 				0930F98019DEFACA00959A72 /* IAP.storyboard in Resources */,
 				0930F95B19DECEC800959A72 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0930F96119DECEC800959A72 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -599,7 +524,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0930F97719DED37900959A72 /* IAPEngine.m in Sources */,
-				0930F95619DECEC800959A72 /* ViewController.m in Sources */,
 				09A569DE19E70EA400E4EB20 /* README.md in Sources */,
 				0930F99619E3FC3E00959A72 /* SKPaymentTransaction+Verfied.m in Sources */,
 				0930F99019E2D72B00959A72 /* IAPReceiptValidationController.m in Sources */,
@@ -611,24 +535,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0930F95F19DECEC800959A72 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0930F97819DED37900959A72 /* IAPEngine.m in Sources */,
-				0930F96A19DECEC800959A72 /* inAppPurchasesTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		0930F96519DECEC800959A72 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0930F94919DECEC800959A72 /* inAppPurchases */;
-			targetProxy = 0930F96419DECEC800959A72 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0930F95C19DECEC800959A72 /* LaunchScreen.xib */ = {
@@ -765,40 +672,6 @@
 			};
 			name = Release;
 		};
-		0930F97119DECEC800959A72 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = inAppPurchasesTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/inAppPurchases.app/inAppPurchases";
-			};
-			name = Debug;
-		};
-		0930F97219DECEC800959A72 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = inAppPurchasesTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/inAppPurchases.app/inAppPurchases";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -816,15 +689,6 @@
 			buildConfigurations = (
 				0930F96E19DECEC800959A72 /* Debug */,
 				0930F96F19DECEC800959A72 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		0930F97019DECEC800959A72 /* Build configuration list for PBXNativeTarget "inAppPurchasesTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0930F97119DECEC800959A72 /* Debug */,
-				0930F97219DECEC800959A72 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
