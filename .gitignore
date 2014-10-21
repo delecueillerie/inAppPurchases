@@ -1,2 +1,4 @@
-blind.h
 bin/*
+inAppPurchases/IAPDataBlind.m
+
+inAppPurchases/IAPEngineBlind.m

@@ -31,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "179"
             endingLineNumber = "179"
-            landmarkName = "-paymentQueue:updatedTransactions:"
+            landmarkName = "-buyProduct:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -47,7 +47,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "92"
             endingLineNumber = "92"
-            landmarkName = "-requestDidFinish:"
+            landmarkName = "-isAppReceiptValidated"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

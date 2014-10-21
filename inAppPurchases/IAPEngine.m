@@ -7,7 +7,6 @@
 //
 
 #import "IAPEngine.h"
-#import "SKPaymentTransaction+Verfied.h"
 
 @interface IAPEngine () <SKProductsRequestDelegate, SKPaymentTransactionObserver>
 
@@ -33,6 +32,20 @@ NSString *const IAPEngineProductPurchasedNotification = @"IAPEngineProductPurcha
         _receipt = [NSData dataWithContentsOfURL:url];
     }
     return _receipt;
+}
+
+
++ (IAPEngine *)sharedInstance {
+    static dispatch_once_t once;
+    static IAPEngine *sharedInstance;
+    dispatch_once(&once, ^{
+        NSSet *productIdentifiers = [NSSet setWithObjects:
+                                     productId1,
+                                     productId2,
+                                     nil];
+        sharedInstance = [[self alloc] initWithProductIdentifiers:productIdentifiers];
+    });
+    return sharedInstance;
 }
 
 

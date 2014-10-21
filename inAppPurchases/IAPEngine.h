@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 lagspoon. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "IAPEngineBlind.h"
 #import <StoreKit/StoreKit.h>
 
 typedef void (^RequestProductsCompletionHandler)(BOOL success, NSArray * products);
 UIKIT_EXTERN NSString *const IAPEngineProductPurchasedNotification;
 
-@interface IAPEngine : NSObject <SKRequestDelegate>
+@interface IAPEngine : IAPEngineBlind <SKRequestDelegate, SKPaymentTransactionObserver, SKProductsRequestDelegate>
 
 - (id)initWithProductIdentifiers:(NSSet *)productIdentifiers;
 - (void)requestProductsWithCompletionHandler:(RequestProductsCompletionHandler)completionHandler;

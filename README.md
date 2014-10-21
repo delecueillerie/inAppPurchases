@@ -2,11 +2,16 @@ inAppPurchases
 ==============
 
 # Goal of this librairy
-This library deal with the InApp Purchase (IAP) verification locally.
+This App/Library deal with the InApp Purchase (IAP) verification locally.
 
-After reading the [Apple doc](https://developer.apple.com/library/ios/releasenotes/General/ValidateAppStoreReceipt/Chapters/ValidateLocally.html#//apple_ref/doc/uid/TP40010573-CH1-SW2) I was not feeling confortable  :sweat:
+After reading the [Apple doc](https://developer.apple.com/library/ios/releasenotes/General/ValidateAppStoreReceipt/Chapters/ValidateLocally.html#//apple_ref/doc/uid/TP40010573-CH1-SW2) I was not feeling confortable.
 
 Thus, I googlised and found inspiration with :
+
+- https://github.com/rmaddy/VerifyStoreReceiptiOS
+
+
+
 
 - http://alexistaugeron.com/blog/2013/09/23/app-store-receipt-validation-on-ios-7/
 - http://objectiveprogrammer.blogspot.fr/2013/12/verifying-ios-7-app-receipt.html
