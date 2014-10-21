@@ -21,6 +21,7 @@
 		099205BD19F69E5A003AD952 /* IAPDataBlind.m in Sources */ = {isa = PBXBuildFile; fileRef = 099205BB19F69E5A003AD952 /* IAPDataBlind.m */; };
 		099205C019F6A0F1003AD952 /* IAPEngineBlind.h in Headers */ = {isa = PBXBuildFile; fileRef = 099205BE19F6A0F1003AD952 /* IAPEngineBlind.h */; };
 		099205C119F6A0F1003AD952 /* IAPEngineBlind.m in Sources */ = {isa = PBXBuildFile; fileRef = 099205BF19F6A0F1003AD952 /* IAPEngineBlind.m */; };
+		099205C419F70419003AD952 /* IAPEngineBlind.m in Sources */ = {isa = PBXBuildFile; fileRef = 099205C319F70419003AD952 /* IAPEngineBlind.m */; };
 		09A569DE19E70EA400E4EB20 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 09A569DD19E70EA400E4EB20 /* README.md */; };
 		09A56A6119EC0E9300E4EB20 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A56A5F19EC0E9300E4EB20 /* libcrypto.a */; };
 		09A56A6219EC0E9300E4EB20 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A56A6019EC0E9300E4EB20 /* libssl.a */; };
@@ -48,6 +49,7 @@
 		099205BE19F6A0F1003AD952 /* IAPEngineBlind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPEngineBlind.h; sourceTree = "<group>"; };
 		099205BF19F6A0F1003AD952 /* IAPEngineBlind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPEngineBlind.m; sourceTree = "<group>"; };
 		099205C219F6C6E2003AD952 /* build-libssl.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "build-libssl.sh"; sourceTree = "<group>"; };
+		099205C319F70419003AD952 /* IAPEngineBlind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPEngineBlind.m; sourceTree = "<group>"; };
 		09A569DD19E70EA400E4EB20 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		09A56A5F19EC0E9300E4EB20 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = lib/libcrypto.a; sourceTree = "<group>"; };
 		09A56A6019EC0E9300E4EB20 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = lib/libssl.a; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				099205BB19F69E5A003AD952 /* IAPDataBlind.m */,
 				099205BE19F6A0F1003AD952 /* IAPEngineBlind.h */,
 				099205BF19F6A0F1003AD952 /* IAPEngineBlind.m */,
+				099205C319F70419003AD952 /* IAPEngineBlind.m */,
 				0930F97519DED37900959A72 /* IAPEngine.h */,
 				0930F97619DED37900959A72 /* IAPEngine.m */,
 				0930F97919DEDB0C00959A72 /* IAPEngineForSFMK.h */,
@@ -252,6 +255,7 @@
 				0930F98419DEFBF700959A72 /* IAPTVController.m in Sources */,
 				099205C119F6A0F1003AD952 /* IAPEngineBlind.m in Sources */,
 				0930F95319DECEC800959A72 /* AppDelegate.m in Sources */,
+				099205C419F70419003AD952 /* IAPEngineBlind.m in Sources */,
 				0930F97B19DEDB0C00959A72 /* IAPEngineForSFMK.m in Sources */,
 				0930F95019DECEC800959A72 /* main.m in Sources */,
 			);
