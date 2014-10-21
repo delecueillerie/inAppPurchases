@@ -1,4 +1,3 @@
 bin/*
-inAppPurchases/IAPDataBlind.m
-
-inAppPurchases/IAPEngineBlind.m
+IAPDataBlind.m
+IAPEngineBlind.m
