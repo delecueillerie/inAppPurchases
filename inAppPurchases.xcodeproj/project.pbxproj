@@ -13,16 +13,13 @@
 		0930F95E19DECEC800959A72 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0930F95C19DECEC800959A72 /* LaunchScreen.xib */; };
 		0930F97419DED0C500959A72 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0930F97319DED0C500959A72 /* StoreKit.framework */; };
 		0930F97719DED37900959A72 /* IAPEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0930F97619DED37900959A72 /* IAPEngine.m */; };
-		0930F97B19DEDB0C00959A72 /* IAPEngineForSFMK.m in Sources */ = {isa = PBXBuildFile; fileRef = 0930F97A19DEDB0C00959A72 /* IAPEngineForSFMK.m */; };
 		0930F98019DEFACA00959A72 /* IAP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0930F97E19DEFACA00959A72 /* IAP.storyboard */; };
 		0930F98419DEFBF700959A72 /* IAPTVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0930F98319DEFBF700959A72 /* IAPTVController.m */; };
 		0930F98D19E2D32200959A72 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0930F98C19E2D32200959A72 /* Security.framework */; };
 		099205BC19F69E5A003AD952 /* IAPDataBlind.h in Headers */ = {isa = PBXBuildFile; fileRef = 099205BA19F69E5A003AD952 /* IAPDataBlind.h */; };
 		099205BD19F69E5A003AD952 /* IAPDataBlind.m in Sources */ = {isa = PBXBuildFile; fileRef = 099205BB19F69E5A003AD952 /* IAPDataBlind.m */; };
 		099205C019F6A0F1003AD952 /* IAPEngineBlind.h in Headers */ = {isa = PBXBuildFile; fileRef = 099205BE19F6A0F1003AD952 /* IAPEngineBlind.h */; };
-		099205C119F6A0F1003AD952 /* IAPEngineBlind.m in Sources */ = {isa = PBXBuildFile; fileRef = 099205BF19F6A0F1003AD952 /* IAPEngineBlind.m */; };
 		099205C419F70419003AD952 /* IAPEngineBlind.m in Sources */ = {isa = PBXBuildFile; fileRef = 099205C319F70419003AD952 /* IAPEngineBlind.m */; };
-		09A569DE19E70EA400E4EB20 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 09A569DD19E70EA400E4EB20 /* README.md */; };
 		09A56A6119EC0E9300E4EB20 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A56A5F19EC0E9300E4EB20 /* libcrypto.a */; };
 		09A56A6219EC0E9300E4EB20 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A56A6019EC0E9300E4EB20 /* libssl.a */; };
 /* End PBXBuildFile section */
@@ -38,8 +35,6 @@
 		0930F97319DED0C500959A72 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		0930F97519DED37900959A72 /* IAPEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPEngine.h; sourceTree = "<group>"; };
 		0930F97619DED37900959A72 /* IAPEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPEngine.m; sourceTree = "<group>"; };
-		0930F97919DEDB0C00959A72 /* IAPEngineForSFMK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPEngineForSFMK.h; sourceTree = "<group>"; };
-		0930F97A19DEDB0C00959A72 /* IAPEngineForSFMK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPEngineForSFMK.m; sourceTree = "<group>"; };
 		0930F97F19DEFACA00959A72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = inAppPurchases/Base.lproj/IAP.storyboard; sourceTree = "<group>"; };
 		0930F98219DEFBF700959A72 /* IAPTVController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPTVController.h; sourceTree = "<group>"; };
 		0930F98319DEFBF700959A72 /* IAPTVController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPTVController.m; sourceTree = "<group>"; };
@@ -47,10 +42,7 @@
 		099205BA19F69E5A003AD952 /* IAPDataBlind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPDataBlind.h; sourceTree = "<group>"; };
 		099205BB19F69E5A003AD952 /* IAPDataBlind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPDataBlind.m; sourceTree = "<group>"; };
 		099205BE19F6A0F1003AD952 /* IAPEngineBlind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPEngineBlind.h; sourceTree = "<group>"; };
-		099205BF19F6A0F1003AD952 /* IAPEngineBlind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPEngineBlind.m; sourceTree = "<group>"; };
-		099205C219F6C6E2003AD952 /* build-libssl.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "build-libssl.sh"; sourceTree = "<group>"; };
 		099205C319F70419003AD952 /* IAPEngineBlind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPEngineBlind.m; sourceTree = "<group>"; };
-		09A569DD19E70EA400E4EB20 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		09A56A5F19EC0E9300E4EB20 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = lib/libcrypto.a; sourceTree = "<group>"; };
 		09A56A6019EC0E9300E4EB20 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = lib/libssl.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,8 +65,6 @@
 		0930F94119DECEC800959A72 = {
 			isa = PBXGroup;
 			children = (
-				099205C219F6C6E2003AD952 /* build-libssl.sh */,
-				09A569DD19E70EA400E4EB20 /* README.md */,
 				0930F94C19DECEC800959A72 /* Classes */,
 				0930F98119DEFAF000959A72 /* App */,
 				0930F99919E6C21700959A72 /* Framework */,
@@ -96,12 +86,9 @@
 				099205BA19F69E5A003AD952 /* IAPDataBlind.h */,
 				099205BB19F69E5A003AD952 /* IAPDataBlind.m */,
 				099205BE19F6A0F1003AD952 /* IAPEngineBlind.h */,
-				099205BF19F6A0F1003AD952 /* IAPEngineBlind.m */,
 				099205C319F70419003AD952 /* IAPEngineBlind.m */,
 				0930F97519DED37900959A72 /* IAPEngine.h */,
 				0930F97619DED37900959A72 /* IAPEngine.m */,
-				0930F97919DEDB0C00959A72 /* IAPEngineForSFMK.h */,
-				0930F97A19DEDB0C00959A72 /* IAPEngineForSFMK.m */,
 			);
 			name = Classes;
 			path = inAppPurchases;
@@ -251,12 +238,9 @@
 			files = (
 				099205BD19F69E5A003AD952 /* IAPDataBlind.m in Sources */,
 				0930F97719DED37900959A72 /* IAPEngine.m in Sources */,
-				09A569DE19E70EA400E4EB20 /* README.md in Sources */,
 				0930F98419DEFBF700959A72 /* IAPTVController.m in Sources */,
-				099205C119F6A0F1003AD952 /* IAPEngineBlind.m in Sources */,
 				0930F95319DECEC800959A72 /* AppDelegate.m in Sources */,
 				099205C419F70419003AD952 /* IAPEngineBlind.m in Sources */,
-				0930F97B19DEDB0C00959A72 /* IAPEngineForSFMK.m in Sources */,
 				0930F95019DECEC800959A72 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,6 +353,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/include",
+				);
 				INFOPLIST_FILE = inAppPurchases/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -388,6 +378,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/include",
+				);
 				INFOPLIST_FILE = inAppPurchases/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (

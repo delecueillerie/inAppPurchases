@@ -14,7 +14,7 @@ UIKIT_EXTERN NSString *const IAPEngineProductPurchasedNotification;
 
 @interface IAPEngine : IAPEngineBlind <SKRequestDelegate, SKPaymentTransactionObserver, SKProductsRequestDelegate>
 
-- (id)initWithProductIdentifiers:(NSSet *)productIdentifiers;
++(IAPEngine *) sharedInstance;
 - (void)requestProductsWithCompletionHandler:(RequestProductsCompletionHandler)completionHandler;
 - (void)buyProduct:(SKProduct *)product;
 - (BOOL)productPurchased:(NSString *)productIdentifier;

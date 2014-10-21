@@ -24,7 +24,9 @@
 
 NSString *const IAPEngineProductPurchasedNotification = @"IAPEngineProductPurchasedNotification";
 
-
+/*////////////////////////////////////////////////////////////////////////////////////////
+ Accessors
+/*///////////////////////////////////////////////////////////////////////////////////////*/
 
 -(NSData *) receipt {
     if (!_receipt) {
@@ -34,67 +36,62 @@ NSString *const IAPEngineProductPurchasedNotification = @"IAPEngineProductPurcha
     return _receipt;
 }
 
+-(NSMutableSet *) purchasedProductIdentifiers {
+    if (!_purchasedProductIdentifiers) {
+        _purchasedProductIdentifiers = [NSMutableSet set];
+    }
+    return _purchasedProductIdentifiers;
+}
+/*////////////////////////////////////////////////////////////////////////////////////////
+ Initializer
+ /*///////////////////////////////////////////////////////////////////////////////////////*/
 
-+ (IAPEngine *)sharedInstance {
++(IAPEngine *)sharedInstance {
     static dispatch_once_t once;
     static IAPEngine *sharedInstance;
     dispatch_once(&once, ^{
-        NSSet *productIdentifiers = [NSSet setWithObjects:
-                                     productId1,
-                                     productId2,
-                                     nil];
-        sharedInstance = [[self alloc] initWithProductIdentifiers:productIdentifiers];
+        sharedInstance = [[self alloc] init];
     });
     return sharedInstance;
 }
 
 
 
-- (id)initWithProductIdentifiers:(NSSet *)productIdentifiers {
+- (id)init {
     
     if ((self = [super init])) {
-       
-        // Store product identifiers
-        self.productIdentifiers = productIdentifiers;
         
         if (!self.receipt) { //sandbox environment ?
             self.receiptRequestRefresh = [[SKReceiptRefreshRequest alloc] init];
             self.receiptRequestRefresh.delegate = self;
             [self.receiptRequestRefresh start];
         }
-        
-        if ([self isAppReceiptValidated]) {
-            
-            /*
-            // Check for previously purchased products
-            self.purchasedProductIdentifiers = [NSMutableSet set];
-            
-            for (NSString * productIdentifier in self.productIdentifiers) {
-                BOOL productPurchased = [[NSUserDefaults standardUserDefaults] boolForKey:productIdentifier];
-                if (productPurchased) {
-                    [self.purchasedProductIdentifiers addObject:productIdentifier];
-                    NSLog(@"Previously purchased: %@", productIdentifier);
-                } else {
-                    NSLog(@"Not purchased: %@", productIdentifier);
-                }
-            }
-             */
-             
-            [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+
+        //drain the queue
+        for (SKPaymentTransaction *transaction in [[SKPaymentQueue defaultQueue] transactions]) {
+            [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
         }
+        
+        // Check for previously purchased products
+        
+        
+        for (NSString * productIdentifier in self.productIdentifiers) {
+            BOOL productPurchased = [[NSUserDefaults standardUserDefaults] boolForKey:productIdentifier];
+            if (productPurchased) {
+                [self.purchasedProductIdentifiers addObject:productIdentifier];
+                NSLog(@"Previously purchased: %@", productIdentifier);
+            } else {
+                NSLog(@"Not purchased: %@", productIdentifier);
+            }
+        }
+
+        [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
     }
     return self;
 }
 
 
 
-- (BOOL) isAppReceiptValidated {
-    
-    
-
-    
-    return NO;
-}
 
 /*////////////////////////////////////////////////////////////////////////////////
  SKRequestDelegate

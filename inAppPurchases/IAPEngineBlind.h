@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface IAPEngineBlind : NSObject
-
+/*
 extern NSString *kReceiptBundleIdentifer;
 extern NSString *kReceiptBundleIdentiferData;
 extern NSString *kReceiptVersion;
@@ -32,4 +32,5 @@ extern NSString *kReceiptInAppWebOrderLineItemID;
 NSDictionary *dictionaryWithAppStoreReceipt(NSString *receiptPath);
 NSArray *obtainInAppPurchases(NSString *receiptPath);
 BOOL verifyReceiptAtPath(NSString *receiptPath);
+*/
 @end

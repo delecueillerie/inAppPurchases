@@ -10,6 +10,8 @@ Thus, I googlised and found inspiration with :
 
 - https://github.com/rmaddy/VerifyStoreReceiptiOS
 
+All the difficult part (extract receipt from container, receipt parsing, function from openssl, etc.) can be understood reading the [source code] (https://github.com/rmaddy/VerifyStoreReceiptiOS/blob/master/VerifyStoreReceipt.m)
+
 
 
 
@@ -21,7 +23,7 @@ Thus, I googlised and found inspiration with :
 # First step
 
 ## Get the receipt
-It's easy to get the receipt 
+It's easy to get the receipt
 
 ```
 -(NSData *) receipt {
@@ -50,11 +52,3 @@ Both look ok.
 
 list of links that helped me
 http://objectiveprogrammer.blogspot.dk/
-
-
-
-
-
-
-
-

@@ -7,8 +7,8 @@
 //
 
 #import "IAPTVController.h"
-#import "IAPEngineForSFMK.h"
 #import <StoreKit/StoreKit.h>
+#import "IAPEngine.h"
 
 @interface IAPTVController ()
 
@@ -76,7 +76,7 @@
     [self.priceFormatter setLocale:product.priceLocale];
     cell.detailTextLabel.text = [self.priceFormatter stringFromNumber:product.price];
     
-    if ([[IAPEngineForSFMK sharedInstance] productPurchased:product.productIdentifier]) {
+    if ([[IAPEngine sharedInstance] productPurchased:product.productIdentifier]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         cell.accessoryView = nil;
     } else {
@@ -98,7 +98,7 @@
 - (void)reload {
     self.products = nil;
     [self.tableView reloadData];
-    [[IAPEngineForSFMK sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+    [[IAPEngine sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
         if (success) {
             self.products = products;
             [self.tableView reloadData];
@@ -113,7 +113,7 @@
     SKProduct *product = self.products[buyButton.tag];
     
     NSLog(@"Buying %@...", product.productIdentifier);
-    [[IAPEngineForSFMK sharedInstance] buyProduct:product];
+    [[IAPEngine sharedInstance] buyProduct:product];
     
 }
 
@@ -130,6 +130,6 @@
 }
 
 - (void)restoreTapped:(id)sender {
-    [[IAPEngineForSFMK sharedInstance] restoreCompletedTransactions];
+    [[IAPEngine sharedInstance] restoreCompletedTransactions];
 }
 @end
