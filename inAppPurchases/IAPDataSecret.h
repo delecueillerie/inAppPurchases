@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface IAPDataBlind : NSObject
-+(NSSet *) productIdentifiers;
-+(NSString *) bundleIdentifier;
-+(NSString *) bundleVersion;
+@interface IAPDataSecret : NSObject
+
++(IAPDataSecret *)sharedInstance;
+@property (strong, nonatomic) NSString *bundleIdentifier;
+@property (strong, nonatomic) NSString *bundleVersion;
+
+
 @end

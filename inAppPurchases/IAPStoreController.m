@@ -1,40 +1,31 @@
 //
-//  IAPHelper.m
+//  IAPStoreController.m
 //  inAppPurchases
 //
-//  Created by Olivier Delecueillerie on 03/10/2014.
+//  Created by Olivier Delecueillerie on 22/10/2014.
 //  Copyright (c) 2014 lagspoon. All rights reserved.
 //
 
-#import "IAPEngine.h"
-
-@interface IAPEngine () <SKProductsRequestDelegate, SKPaymentTransactionObserver>
+#import "IAPStoreController.h"
+//#import <UIKit/UIKit.h>
+@interface IAPStoreController ()
 
 @property (strong, nonatomic) SKProductsRequest *productsRequest;
 @property (strong, nonatomic) SKReceiptRefreshRequest *receiptRequestRefresh;
 
 
 @property (strong, nonatomic) RequestProductsCompletionHandler completionHandler;
-@property (strong, nonatomic) NSData *receipt;
-@property (strong, nonatomic) NSSet *productIdentifiers;
 @property (strong, nonatomic) NSMutableSet *purchasedProductIdentifiers;
 @end
 
-@implementation IAPEngine
+@implementation IAPStoreController
 
 NSString *const IAPEngineProductPurchasedNotification = @"IAPEngineProductPurchasedNotification";
 
 /*////////////////////////////////////////////////////////////////////////////////////////
  Accessors
-/*///////////////////////////////////////////////////////////////////////////////////////*/
+ /*///////////////////////////////////////////////////////////////////////////////////////*/
 
--(NSData *) receipt {
-    if (!_receipt) {
-        NSURL *url = [[NSBundle mainBundle] appStoreReceiptURL];
-        _receipt = [NSData dataWithContentsOfURL:url];
-    }
-    return _receipt;
-}
 
 -(NSMutableSet *) purchasedProductIdentifiers {
     if (!_purchasedProductIdentifiers) {
@@ -42,13 +33,14 @@ NSString *const IAPEngineProductPurchasedNotification = @"IAPEngineProductPurcha
     }
     return _purchasedProductIdentifiers;
 }
+
 /*////////////////////////////////////////////////////////////////////////////////////////
  Initializer
  /*///////////////////////////////////////////////////////////////////////////////////////*/
 
-+(IAPEngine *)sharedInstance {
++(IAPStoreController *)sharedInstance {
     static dispatch_once_t once;
-    static IAPEngine *sharedInstance;
+    static IAPStoreController *sharedInstance;
     dispatch_once(&once, ^{
         sharedInstance = [[self alloc] init];
     });
@@ -60,18 +52,7 @@ NSString *const IAPEngineProductPurchasedNotification = @"IAPEngineProductPurcha
 - (id)init {
     
     if ((self = [super init])) {
-        
-        if (!self.receipt) { //sandbox environment ?
-            self.receiptRequestRefresh = [[SKReceiptRefreshRequest alloc] init];
-            self.receiptRequestRefresh.delegate = self;
-            [self.receiptRequestRefresh start];
-        }
 
-        //drain the queue
-        for (SKPaymentTransaction *transaction in [[SKPaymentQueue defaultQueue] transactions]) {
-            [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-        }
-        
         // Check for previously purchased products
         
         
@@ -84,8 +65,7 @@ NSString *const IAPEngineProductPurchasedNotification = @"IAPEngineProductPurcha
                 NSLog(@"Not purchased: %@", productIdentifier);
             }
         }
-
-        [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+        
     }
     return self;
 }
@@ -117,7 +97,7 @@ NSString *const IAPEngineProductPurchasedNotification = @"IAPEngineProductPurcha
     }
     
     
-
+    
 }
 
 
@@ -132,11 +112,25 @@ NSString *const IAPEngineProductPurchasedNotification = @"IAPEngineProductPurcha
 
 
 - (void)requestProductsWithCompletionHandler:(RequestProductsCompletionHandler)completionHandler {
-
-    self.completionHandler = [completionHandler copy];
-    self.productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:self.productIdentifiers];
-    self.productsRequest.delegate = self;
-    [self.productsRequest start];
+    
+    
+    // Query the App Store for product information if the user is is allowed to make purchases.
+    // Display an alert, otherwise.
+    if([SKPaymentQueue canMakePayments])
+    {
+        self.completionHandler = [completionHandler copy];
+        self.productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:self.productIdentifiers];
+        self.productsRequest.delegate = self;
+        [self.productsRequest start];
+    } else {
+        // Warn the user that they are not allowed to make purchases.
+        UIAlertView *alerView = [[UIAlertView alloc] initWithTitle:@"Warning"
+                                                           message:@"Purchases are disabled on this device."
+                                                          delegate:nil
+                                                 cancelButtonTitle:@"OK"
+                                                 otherButtonTitles:nil];
+        [alerView show];
+    }
 }
 
 /*////////////////////////////////////////////////////////////////////////////////
@@ -181,60 +175,8 @@ NSString *const IAPEngineProductPurchasedNotification = @"IAPEngineProductPurcha
 - (void)restoreCompletedTransactions {
     [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
 }
-/*////////////////////////////////////////////////////////////////////////////////
- SKPaymentTransactionObserver delegate
- ///////////////////////////////////////////////////////////////////////////////*/
 
-- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions {
-    for (SKPaymentTransaction * transaction in transactions) {
-    }
-}
 
-/*////////////////////////////////////////////////////////////////////////////////
- Transaction
- ///////////////////////////////////////////////////////////////////////////////*/
-
-- (void) performTransaction:(SKPaymentTransaction *) transaction {
-        switch (transaction.transactionState)
-        {
-            case SKPaymentTransactionStatePurchased:
-                [self completeTransaction:transaction];
-                break;
-            case SKPaymentTransactionStateFailed:
-                [self failedTransaction:transaction];
-                break;
-            case SKPaymentTransactionStateRestored:
-                [self restoreTransaction:transaction];
-                break;
-            default:
-                break;
-        }
-}
-
-             
-- (void)completeTransaction:(SKPaymentTransaction *)transaction {
-    NSLog(@"completeTransaction...");
-/*    if ([self validateReceiptForTransaction:transaction]) {
-        [self provideContentForProductIdentifier:transaction.payment.productIdentifier];
-        [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-    }*/
-}
-
-- (void)restoreTransaction:(SKPaymentTransaction *)transaction {
-    NSLog(@"restoreTransaction...");
-/*    if ([self validateReceiptForTransaction:transaction]) {
-        [self provideContentForProductIdentifier:transaction.originalTransaction.payment.productIdentifier];
-        [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-    }*/
-}
-
-- (void)failedTransaction:(SKPaymentTransaction *)transaction {
-    NSLog(@"failedTransaction...");
-    if (transaction.error.code != SKErrorPaymentCancelled) {
-        NSLog(@"Transaction error: %@", transaction.error.localizedDescription);
-    }
-    [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
-}
 
 /*////////////////////////////////////////////////////////////////////////////////
  Provide Content
@@ -247,6 +189,7 @@ NSString *const IAPEngineProductPurchasedNotification = @"IAPEngineProductPurcha
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[NSNotificationCenter defaultCenter] postNotificationName:IAPEngineProductPurchasedNotification object:productIdentifier userInfo:nil];
 }
+
 
 
 

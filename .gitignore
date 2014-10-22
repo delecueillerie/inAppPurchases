@@ -1,3 +1,11 @@
 bin/*
 IAPDataBlind.m
 IAPEngineBlind.m
+
+inAppPurchases/IAPDataSecret.m
+
+inAppPurchases/IAPPurchaseVerificationSecretController.m
+
+inAppPurchases/IAPStoreContentSecretModel.m
+
+inAppPurchases/IAPStoreContentSecretModel.m

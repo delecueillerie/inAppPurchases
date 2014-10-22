@@ -8,7 +8,7 @@
 
 #import "IAPTVController.h"
 #import <StoreKit/StoreKit.h>
-#import "IAPEngine.h"
+#import "IAPStoreController.h"
 
 @interface IAPTVController ()
 
@@ -24,7 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"In App Rage";
+    self.title = @"Olivier Delecueillerie In-App Purchase sample";
     
     //Refresh control
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -76,7 +76,7 @@
     [self.priceFormatter setLocale:product.priceLocale];
     cell.detailTextLabel.text = [self.priceFormatter stringFromNumber:product.price];
     
-    if ([[IAPEngine sharedInstance] productPurchased:product.productIdentifier]) {
+    if ([[IAPStoreController sharedInstance] productPurchased:product.productIdentifier]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         cell.accessoryView = nil;
     } else {
@@ -98,7 +98,7 @@
 - (void)reload {
     self.products = nil;
     [self.tableView reloadData];
-    [[IAPEngine sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+    [[IAPStoreController sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
         if (success) {
             self.products = products;
             [self.tableView reloadData];
@@ -113,7 +113,7 @@
     SKProduct *product = self.products[buyButton.tag];
     
     NSLog(@"Buying %@...", product.productIdentifier);
-    [[IAPEngine sharedInstance] buyProduct:product];
+    [[IAPStoreController sharedInstance] buyProduct:product];
     
 }
 
@@ -130,6 +130,6 @@
 }
 
 - (void)restoreTapped:(id)sender {
-    [[IAPEngine sharedInstance] restoreCompletedTransactions];
+    [[IAPStoreController sharedInstance] restoreCompletedTransactions];
 }
 @end

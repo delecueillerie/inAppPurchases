@@ -12,14 +12,23 @@
 		0930F95B19DECEC800959A72 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0930F95A19DECEC800959A72 /* Images.xcassets */; };
 		0930F95E19DECEC800959A72 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0930F95C19DECEC800959A72 /* LaunchScreen.xib */; };
 		0930F97419DED0C500959A72 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0930F97319DED0C500959A72 /* StoreKit.framework */; };
-		0930F97719DED37900959A72 /* IAPEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0930F97619DED37900959A72 /* IAPEngine.m */; };
 		0930F98019DEFACA00959A72 /* IAP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0930F97E19DEFACA00959A72 /* IAP.storyboard */; };
 		0930F98419DEFBF700959A72 /* IAPTVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0930F98319DEFBF700959A72 /* IAPTVController.m */; };
 		0930F98D19E2D32200959A72 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0930F98C19E2D32200959A72 /* Security.framework */; };
-		099205BC19F69E5A003AD952 /* IAPDataBlind.h in Headers */ = {isa = PBXBuildFile; fileRef = 099205BA19F69E5A003AD952 /* IAPDataBlind.h */; };
-		099205BD19F69E5A003AD952 /* IAPDataBlind.m in Sources */ = {isa = PBXBuildFile; fileRef = 099205BB19F69E5A003AD952 /* IAPDataBlind.m */; };
-		099205C019F6A0F1003AD952 /* IAPEngineBlind.h in Headers */ = {isa = PBXBuildFile; fileRef = 099205BE19F6A0F1003AD952 /* IAPEngineBlind.h */; };
-		099205C419F70419003AD952 /* IAPEngineBlind.m in Sources */ = {isa = PBXBuildFile; fileRef = 099205C319F70419003AD952 /* IAPEngineBlind.m */; };
+		099205BC19F69E5A003AD952 /* IAPDataSecret.h in Headers */ = {isa = PBXBuildFile; fileRef = 099205BA19F69E5A003AD952 /* IAPDataSecret.h */; };
+		099205BD19F69E5A003AD952 /* IAPDataSecret.m in Sources */ = {isa = PBXBuildFile; fileRef = 099205BB19F69E5A003AD952 /* IAPDataSecret.m */; };
+		099205C819F7E3A7003AD952 /* IAPStoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 099205C619F7E3A7003AD952 /* IAPStoreController.m */; };
+		099205CB19F7E3C2003AD952 /* IAPPaymentQueueController.h in Headers */ = {isa = PBXBuildFile; fileRef = 099205C919F7E3C2003AD952 /* IAPPaymentQueueController.h */; };
+		099205CC19F7E3C2003AD952 /* IAPPaymentQueueController.m in Sources */ = {isa = PBXBuildFile; fileRef = 099205CA19F7E3C2003AD952 /* IAPPaymentQueueController.m */; };
+		099205CF19F7E489003AD952 /* IAPPurchaseVerificationSecretController.h in Headers */ = {isa = PBXBuildFile; fileRef = 099205CD19F7E489003AD952 /* IAPPurchaseVerificationSecretController.h */; };
+		099205D019F7E489003AD952 /* IAPPurchaseVerificationSecretController.m in Sources */ = {isa = PBXBuildFile; fileRef = 099205CE19F7E489003AD952 /* IAPPurchaseVerificationSecretController.m */; };
+		099205D319F7E4AC003AD952 /* IAPPurchaseVerificationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 099205D119F7E4AC003AD952 /* IAPPurchaseVerificationController.h */; };
+		099205D419F7E4AC003AD952 /* IAPPurchaseVerificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 099205D219F7E4AC003AD952 /* IAPPurchaseVerificationController.m */; };
+		099205D619F7EA39003AD952 /* IAPStoreController.h in Headers */ = {isa = PBXBuildFile; fileRef = 099205D519F7EA39003AD952 /* IAPStoreController.h */; };
+		099205DF19F7F84B003AD952 /* IAPStoreContentSecretModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 099205DD19F7F84B003AD952 /* IAPStoreContentSecretModel.h */; };
+		099205E019F7F84B003AD952 /* IAPStoreContentSecretModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 099205DE19F7F84B003AD952 /* IAPStoreContentSecretModel.m */; };
+		099205E319F7F95E003AD952 /* IAPProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = 099205E119F7F95E003AD952 /* IAPProduct.h */; };
+		099205E419F7F95E003AD952 /* IAPProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 099205E219F7F95E003AD952 /* IAPProduct.m */; };
 		09A56A6119EC0E9300E4EB20 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A56A5F19EC0E9300E4EB20 /* libcrypto.a */; };
 		09A56A6219EC0E9300E4EB20 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09A56A6019EC0E9300E4EB20 /* libssl.a */; };
 /* End PBXBuildFile section */
@@ -33,16 +42,24 @@
 		0930F95A19DECEC800959A72 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0930F95D19DECEC800959A72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		0930F97319DED0C500959A72 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		0930F97519DED37900959A72 /* IAPEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPEngine.h; sourceTree = "<group>"; };
-		0930F97619DED37900959A72 /* IAPEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPEngine.m; sourceTree = "<group>"; };
 		0930F97F19DEFACA00959A72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = inAppPurchases/Base.lproj/IAP.storyboard; sourceTree = "<group>"; };
 		0930F98219DEFBF700959A72 /* IAPTVController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPTVController.h; sourceTree = "<group>"; };
 		0930F98319DEFBF700959A72 /* IAPTVController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPTVController.m; sourceTree = "<group>"; };
 		0930F98C19E2D32200959A72 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		099205BA19F69E5A003AD952 /* IAPDataBlind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPDataBlind.h; sourceTree = "<group>"; };
-		099205BB19F69E5A003AD952 /* IAPDataBlind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPDataBlind.m; sourceTree = "<group>"; };
-		099205BE19F6A0F1003AD952 /* IAPEngineBlind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPEngineBlind.h; sourceTree = "<group>"; };
-		099205C319F70419003AD952 /* IAPEngineBlind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPEngineBlind.m; sourceTree = "<group>"; };
+		099205BA19F69E5A003AD952 /* IAPDataSecret.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPDataSecret.h; sourceTree = "<group>"; };
+		099205BB19F69E5A003AD952 /* IAPDataSecret.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPDataSecret.m; sourceTree = "<group>"; };
+		099205C619F7E3A7003AD952 /* IAPStoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPStoreController.m; sourceTree = "<group>"; };
+		099205C919F7E3C2003AD952 /* IAPPaymentQueueController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPPaymentQueueController.h; sourceTree = "<group>"; };
+		099205CA19F7E3C2003AD952 /* IAPPaymentQueueController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPPaymentQueueController.m; sourceTree = "<group>"; };
+		099205CD19F7E489003AD952 /* IAPPurchaseVerificationSecretController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPPurchaseVerificationSecretController.h; sourceTree = "<group>"; };
+		099205CE19F7E489003AD952 /* IAPPurchaseVerificationSecretController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPPurchaseVerificationSecretController.m; sourceTree = "<group>"; };
+		099205D119F7E4AC003AD952 /* IAPPurchaseVerificationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPPurchaseVerificationController.h; sourceTree = "<group>"; };
+		099205D219F7E4AC003AD952 /* IAPPurchaseVerificationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPPurchaseVerificationController.m; sourceTree = "<group>"; };
+		099205D519F7EA39003AD952 /* IAPStoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPStoreController.h; sourceTree = "<group>"; };
+		099205DD19F7F84B003AD952 /* IAPStoreContentSecretModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPStoreContentSecretModel.h; sourceTree = "<group>"; };
+		099205DE19F7F84B003AD952 /* IAPStoreContentSecretModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPStoreContentSecretModel.m; sourceTree = "<group>"; };
+		099205E119F7F95E003AD952 /* IAPProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPProduct.h; sourceTree = "<group>"; };
+		099205E219F7F95E003AD952 /* IAPProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPProduct.m; sourceTree = "<group>"; };
 		09A56A5F19EC0E9300E4EB20 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = lib/libcrypto.a; sourceTree = "<group>"; };
 		09A56A6019EC0E9300E4EB20 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = lib/libssl.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,12 +100,8 @@
 		0930F94C19DECEC800959A72 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				099205BA19F69E5A003AD952 /* IAPDataBlind.h */,
-				099205BB19F69E5A003AD952 /* IAPDataBlind.m */,
-				099205BE19F6A0F1003AD952 /* IAPEngineBlind.h */,
-				099205C319F70419003AD952 /* IAPEngineBlind.m */,
-				0930F97519DED37900959A72 /* IAPEngine.h */,
-				0930F97619DED37900959A72 /* IAPEngine.m */,
+				099205DB19F7EF45003AD952 /* Model */,
+				099205DC19F7EF4C003AD952 /* Controller */,
 			);
 			name = Classes;
 			path = inAppPurchases;
@@ -130,6 +143,34 @@
 			name = Framework;
 			sourceTree = "<group>";
 		};
+		099205DB19F7EF45003AD952 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				099205BA19F69E5A003AD952 /* IAPDataSecret.h */,
+				099205BB19F69E5A003AD952 /* IAPDataSecret.m */,
+				099205DD19F7F84B003AD952 /* IAPStoreContentSecretModel.h */,
+				099205DE19F7F84B003AD952 /* IAPStoreContentSecretModel.m */,
+				099205E119F7F95E003AD952 /* IAPProduct.h */,
+				099205E219F7F95E003AD952 /* IAPProduct.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		099205DC19F7EF4C003AD952 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				099205D519F7EA39003AD952 /* IAPStoreController.h */,
+				099205C619F7E3A7003AD952 /* IAPStoreController.m */,
+				099205CD19F7E489003AD952 /* IAPPurchaseVerificationSecretController.h */,
+				099205CE19F7E489003AD952 /* IAPPurchaseVerificationSecretController.m */,
+				099205D119F7E4AC003AD952 /* IAPPurchaseVerificationController.h */,
+				099205D219F7E4AC003AD952 /* IAPPurchaseVerificationController.m */,
+				099205C919F7E3C2003AD952 /* IAPPaymentQueueController.h */,
+				099205CA19F7E3C2003AD952 /* IAPPaymentQueueController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -137,8 +178,13 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				099205C019F6A0F1003AD952 /* IAPEngineBlind.h in Headers */,
-				099205BC19F69E5A003AD952 /* IAPDataBlind.h in Headers */,
+				099205CB19F7E3C2003AD952 /* IAPPaymentQueueController.h in Headers */,
+				099205D319F7E4AC003AD952 /* IAPPurchaseVerificationController.h in Headers */,
+				099205E319F7F95E003AD952 /* IAPProduct.h in Headers */,
+				099205CF19F7E489003AD952 /* IAPPurchaseVerificationSecretController.h in Headers */,
+				099205DF19F7F84B003AD952 /* IAPStoreContentSecretModel.h in Headers */,
+				099205BC19F69E5A003AD952 /* IAPDataSecret.h in Headers */,
+				099205D619F7EA39003AD952 /* IAPStoreController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,7 +217,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0600;
-				ORGANIZATIONNAME = lagspoon;
+				ORGANIZATIONNAME = "Olivier Delecueillerie";
 				TargetAttributes = {
 					0930F94919DECEC800959A72 = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -236,12 +282,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				099205BD19F69E5A003AD952 /* IAPDataBlind.m in Sources */,
-				0930F97719DED37900959A72 /* IAPEngine.m in Sources */,
+				099205D419F7E4AC003AD952 /* IAPPurchaseVerificationController.m in Sources */,
+				099205BD19F69E5A003AD952 /* IAPDataSecret.m in Sources */,
 				0930F98419DEFBF700959A72 /* IAPTVController.m in Sources */,
+				099205C819F7E3A7003AD952 /* IAPStoreController.m in Sources */,
+				099205E019F7F84B003AD952 /* IAPStoreContentSecretModel.m in Sources */,
 				0930F95319DECEC800959A72 /* AppDelegate.m in Sources */,
-				099205C419F70419003AD952 /* IAPEngineBlind.m in Sources */,
+				099205D019F7E489003AD952 /* IAPPurchaseVerificationSecretController.m in Sources */,
 				0930F95019DECEC800959A72 /* main.m in Sources */,
+				099205E419F7F95E003AD952 /* IAPProduct.m in Sources */,
+				099205CC19F7E3C2003AD952 /* IAPPaymentQueueController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
