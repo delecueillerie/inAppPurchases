@@ -3,3 +3,6 @@ inAppPurchases/IAPDataSecret.m
 inAppPurchases/IAPPurchaseVerificationSecretController.m
 
 inAppPurchases/IAPStoreContentSecretModel.m
+*Secret*
+*secret*
+inAppPurchases/productIdentifiersSecret.plist

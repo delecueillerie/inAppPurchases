@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <StoreKit/StoreKit.h>
 
 @interface IAPProduct : NSObject
+
++(IAPProduct *) createProductFrom:(SKProduct *)product;
+@property(strong, nonatomic) NSString *identifier;
+@property(strong, nonatomic) NSString *localizedDescription;
+@property(strong, nonatomic) NSString *localizedTitle;
+@property(strong, nonatomic) NSString *price;
+@property BOOL purchased;
 
 @end

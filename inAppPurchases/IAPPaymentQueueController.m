@@ -13,15 +13,14 @@
 
 /*////////////////////////////////////////////////////////////////////////////////////////
  Accessors
- /*///////////////////////////////////////////////////////////////////////////////////////*/
+ ////////////////////////////////////////////////////////////////////////////////////////*/
 
 
 
 
 /*////////////////////////////////////////////////////////////////////////////////////////
  Initializer
- /*///////////////////////////////////////////////////////////////////////////////////////*/
-
+ ////////////////////////////////////////////////////////////////////////////////////////*/
 
 +(IAPPaymentQueueController *)sharedInstance {
     static dispatch_once_t once;
@@ -38,6 +37,31 @@
         [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
     }
     return self;
+}
+
+/*////////////////////////////////////////////////////////////////////////////////
+ Triggered action
+ ///////////////////////////////////////////////////////////////////////////////*/
+
+- (void)buyProduct:(SKProduct *)product {
+    if([SKPaymentQueue canMakePayments]) {
+        
+        NSLog(@"Buying %@...", product.productIdentifier);
+        SKPayment * payment = [SKPayment paymentWithProduct:product];
+        [[SKPaymentQueue defaultQueue] addPayment:payment];
+    } else {
+        // Warn the user that they are not allowed to make purchases.
+        UIAlertView *alerView = [[UIAlertView alloc] initWithTitle:@"Warning"
+                                                           message:@"Purchases are disabled on this device."
+                                                          delegate:nil
+                                                 cancelButtonTitle:@"OK"
+                                                 otherButtonTitles:nil];
+        [alerView show];
+    }
+}
+
+- (void)restoreCompletedTransactions {
+    [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
 }
 
 
@@ -88,4 +112,5 @@
     }
     [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
 }
+
 @end

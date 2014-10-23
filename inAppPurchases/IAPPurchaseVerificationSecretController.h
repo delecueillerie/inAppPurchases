@@ -10,4 +10,26 @@
 
 @interface IAPPurchaseVerificationSecretController : NSObject
 
+extern NSString *kReceiptBundleIdentifer;
+extern NSString *kReceiptBundleIdentiferData;
+extern NSString *kReceiptVersion;
+extern NSString *kReceiptOpaqueValue;
+extern NSString *kReceiptHash;
+extern NSString *kReceiptInApp;
+extern NSString *kReceiptOriginalVersion;
+extern NSString *kReceiptExpirationDate;
+
+extern NSString *kReceiptInAppQuantity;
+extern NSString *kReceiptInAppProductIdentifier;
+extern NSString *kReceiptInAppTransactionIdentifier;
+extern NSString *kReceiptInAppPurchaseDate;
+extern NSString *kReceiptInAppOriginalTransactionIdentifier;
+extern NSString *kReceiptInAppOriginalPurchaseDate;
+extern NSString *kReceiptInAppSubscriptionExpirationDate;
+extern NSString *kReceiptInAppCancellationDate;
+extern NSString *kReceiptInAppWebOrderLineItemID;
+
+
+-(NSArray *) getInAppPurchasesFromReceiptPath:(NSString *) receiptPath;
+
 @end

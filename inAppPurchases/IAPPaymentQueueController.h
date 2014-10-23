@@ -8,9 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import <StoreKit/StoreKit.h>
+#import "IAPProduct.h"
+
+@protocol paymentControllerDelegate <NSObject>
+
+- (BOOL)provideContentForProductIdentifier:(NSString *)productIdentifier;
+
+@end
+
 
 @interface IAPPaymentQueueController : NSObject <SKPaymentTransactionObserver>
 
 +(IAPPaymentQueueController *)sharedInstance;
-
+- (void)buyProduct:(IAPProduct *)product;
+- (void)restoreCompletedTransactions;
 @end

@@ -7,16 +7,26 @@
 //
 
 #import "IAPTVController.h"
-#import <StoreKit/StoreKit.h>
-#import "IAPStoreController.h"
+
+#import "IAPStoreContentSecretController.h"
+#import "IAPPaymentQueueController.h"
+#import "IAPProduct.h"
 
 @interface IAPTVController ()
 
-@property (strong, nonatomic) NSArray *products;
-@property (strong, nonatomic) NSNumberFormatter * priceFormatter;
+@property(strong, nonatomic) IAPStoreContentSecretController *storeContentController;
+@property(strong, nonatomic) IAPPaymentQueueController *paymentController;
 @end
 
 @implementation IAPTVController
+
+/*//////////////////////////////////////////////////////////////////////////////////
+ Accessors
+ //////////////////////////////////////////////////////////////////////////////////*/
+
+
+
+
 
 /*//////////////////////////////////////////////////////////////////////////////////
  View Lifecycle
@@ -26,23 +36,22 @@
     [super viewDidLoad];
     self.title = @"Olivier Delecueillerie In-App Purchase sample";
     
+    
+    self.storeContentController = [IAPStoreContentSecretController sharedInstance];
+    self.paymentController = [IAPPaymentQueueController sharedInstance];
+    
     //Refresh control
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(reload) forControlEvents:UIControlEventValueChanged];
     [self reload];
     [self.refreshControl beginRefreshing];
     
-    //Price formatter
-    self.priceFormatter = [[NSNumberFormatter alloc] init];
-    [self.priceFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
-    [self.priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Restore" style:UIBarButtonItemStylePlain target:self action:@selector(restoreTapped:)];
     
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPEngineProductPurchasedNotification object:nil];
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPEngineProductPurchasedNotification object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -65,18 +74,18 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.products count];
+    return [self.storeContentController.products count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    SKProduct * product = (SKProduct *) self.products[indexPath.row];
+    
+    IAPProduct * product = self.storeContentController.productsArray[indexPath.row];
     cell.textLabel.text = product.localizedTitle;
     
-    [self.priceFormatter setLocale:product.priceLocale];
-    cell.detailTextLabel.text = [self.priceFormatter stringFromNumber:product.price];
+    cell.detailTextLabel.text = product.price;
     
-    if ([[IAPStoreController sharedInstance] productPurchased:product.productIdentifier]) {
+    if (product.purchased) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         cell.accessoryView = nil;
     } else {
@@ -96,7 +105,6 @@
  //////////////////////////////////////////////////////////////////////////////////*/
 
 - (void)reload {
-    self.products = nil;
     [self.tableView reloadData];
     [[IAPStoreController sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
         if (success) {

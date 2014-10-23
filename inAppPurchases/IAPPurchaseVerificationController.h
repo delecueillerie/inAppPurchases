@@ -7,7 +7,10 @@
 //
 
 #import "IAPPurchaseVerificationSecretController.h"
+#import <StoreKit/StoreKit.h>
 
-@interface IAPPurchaseVerificationController : IAPPurchaseVerificationSecretController
+@interface IAPPurchaseVerificationController : IAPPurchaseVerificationSecretController <SKRequestDelegate>
 +(IAPPurchaseVerificationController *)sharedInstance;
+-(void) reloadReceipt;
+@property(strong, nonatomic) NSSet *productPurchasedIdentifiers;
 @end
