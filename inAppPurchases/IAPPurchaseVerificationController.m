@@ -13,6 +13,8 @@
 
 @property (strong, nonatomic) NSData *receipt;
 @property (strong, nonatomic) SKReceiptRefreshRequest *receiptRequestRefresh;
+@property (copy) void (^reloadReceiptCompletion)(BOOL success);
+
 @end
 
 @implementation IAPPurchaseVerificationController
@@ -44,6 +46,14 @@
     return _productPurchasedIdentifiers;
 }
 
+-(SKReceiptRefreshRequest *)receiptRequestRefresh {
+    // Query the App Store for product information
+    if (!_receiptRequestRefresh) {
+        _receiptRequestRefresh = [[SKReceiptRefreshRequest alloc] init];
+        _receiptRequestRefresh.delegate = self;
+    }
+    return _receiptRequestRefresh;
+}
 /*////////////////////////////////////////////////////////////////////////////////////////
  Initializer
  /*///////////////////////////////////////////////////////////////////////////////////////*/
@@ -71,10 +81,11 @@
  Trigerred Actions
  /*///////////////////////////////////////////////////////////////////////////////////////*/
 
--(void) reloadReceipt {
+-(void) reloadReceipt:(void (^)(BOOL))completion {
     self.receipt = nil;
     self.productPurchasedIdentifiers = nil;
     [self.receiptRequestRefresh start];
+    self.reloadReceiptCompletion = completion;
 }
 
 /*////////////////////////////////////////////////////////////////////////////////
@@ -85,6 +96,7 @@ SKRequestDelegate
 {
     if ([request isEqual:self.receiptRequestRefresh]){
         NSLog(@"Got receipt");
+        self.reloadReceiptCompletion(YES);
     }
 }
 
@@ -92,8 +104,8 @@ SKRequestDelegate
     
     if ([request isEqual:self.receiptRequestRefresh]){
         NSLog(@"Error getting receipt");
+        self.reloadReceiptCompletion(NO);
     }
-    
 }
 
 

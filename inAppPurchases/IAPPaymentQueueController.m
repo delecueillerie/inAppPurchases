@@ -34,6 +34,10 @@
 -(id) init {
     self = [super init];
     if (self) {
+        
+        if (![SKPaymentQueue canMakePayments]) {
+            NSLog(@"Cannot Make Payment");
+        }
         [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
     }
     return self;

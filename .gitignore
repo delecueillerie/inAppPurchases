@@ -6,3 +6,5 @@ inAppPurchases/IAPStoreContentSecretModel.m
 *Secret*
 *secret*
 inAppPurchases/productIdentifiersSecret.plist
+
+inAppPurchases/IAPStoreContentSecretController.h

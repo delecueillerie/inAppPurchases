@@ -43,9 +43,10 @@
     //Refresh control
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(reload) forControlEvents:UIControlEventValueChanged];
-    [self reload];
-    [self.refreshControl beginRefreshing];
-    
+    if (!self.storeContentController.products) {
+        [self.refreshControl beginRefreshing];
+        [self reload];
+    }
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Restore" style:UIBarButtonItemStylePlain target:self action:@selector(restoreTapped:)];
     
 }
@@ -105,39 +106,33 @@
  //////////////////////////////////////////////////////////////////////////////////*/
 
 - (void)reload {
-    [self.tableView reloadData];
-    [[IAPStoreController sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+    [self.storeContentController requestContent:^(BOOL success) {
         if (success) {
-            self.products = products;
+            NSLog(@"productArray description %@",[self.storeContentController.productsArray description]);
             [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
+
+        } else {
+            [self.refreshControl endRefreshing];
+
         }
-        [self.refreshControl endRefreshing];
     }];
+
 }
 
 - (void)buyButtonTapped:(id)sender {
     
-    UIButton *buyButton = (UIButton *)sender;
-    SKProduct *product = self.products[buyButton.tag];
+    //UIButton *buyButton = (UIButton *)sender;
+    NSUInteger index = [[self.tableView indexPathForSelectedRow] row];
+    IAPProduct *product = self.storeContentController.productsArray[index];
     
-    NSLog(@"Buying %@...", product.productIdentifier);
-    [[IAPStoreController sharedInstance] buyProduct:product];
+    NSLog(@"Buying %@...", product.localizedTitle);
+    [self.paymentController buyProduct:product];
     
 }
 
-- (void)productPurchased:(NSNotification *)notification {
-    
-    NSString * productIdentifier = notification.object;
-    [self.products enumerateObjectsUsingBlock:^(SKProduct * product, NSUInteger idx, BOOL *stop) {
-        if ([product.productIdentifier isEqualToString:productIdentifier]) {
-            [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:idx inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
-            *stop = YES;
-        }
-    }];
-    
-}
 
 - (void)restoreTapped:(id)sender {
-    [[IAPStoreController sharedInstance] restoreCompletedTransactions];
+    [self.paymentController restoreCompletedTransactions];
 }
 @end

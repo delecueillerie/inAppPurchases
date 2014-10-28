@@ -11,6 +11,6 @@
 
 @interface IAPPurchaseVerificationController : IAPPurchaseVerificationSecretController <SKRequestDelegate>
 +(IAPPurchaseVerificationController *)sharedInstance;
--(void) reloadReceipt;
+-(void) reloadReceipt:(void (^)(BOOL success))completion;
 @property(strong, nonatomic) NSSet *productPurchasedIdentifiers;
 @end
