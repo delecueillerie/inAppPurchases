@@ -22,6 +22,7 @@ A few things to know :
 - During development (sandbox) you need to use SKReceiptRefreshRequest and wait for its delegate’s requestDidFinish to have the receipt file at the defined URL
 - You cannot use simulator (no receipt file loaded)
 - You have to allow the user for in-App purchased in Settings/General/Restriction on your device
+- Use a test user Apple Id (created on itunesConnect), and don't forget to disconnect the old id in App Store Setting on the device
 
 
 # Verify the receipt locally
@@ -63,8 +64,7 @@ if (!self.receipt) {
         NSLog(@"Got receipt");
     }
 }
-
-        ```
+```
 
 
 # OpenSSL Framework buiding
